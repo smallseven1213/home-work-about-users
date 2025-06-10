@@ -17,31 +17,30 @@ export default function VitrualizedUsers({ users }: UsersProps) {
   });
 
   return (
-    <ul ref={listRef}>
-      <div
-        className="relative"
-        style={{
-          height: `${virtualizer.getTotalSize()}px`,
-        }}
-      >
-        {virtualizer.getVirtualItems().map((virtualItem) => {
-          const user = users[virtualItem.index];
-          return (
-            <li
-              key={user.id}
-              className="absolute top-0 left-0 w-full"
-              style={{
-                height: `${virtualItem.size}px`,
-                transform: `translateY(${
-                  virtualItem.start - virtualizer.options.scrollMargin
-                }px)`,
-              }}
-            >
-              {user.name}
-            </li>
-          );
-        })}
-      </div>
+    <ul
+      ref={listRef}
+      className="relative"
+      style={{
+        height: `${virtualizer.getTotalSize()}px`,
+      }}
+    >
+      {virtualizer.getVirtualItems().map((virtualItem) => {
+        const user = users[virtualItem.index];
+        return (
+          <li
+            key={user.id}
+            className="absolute top-0 left-0 w-full"
+            style={{
+              height: `${virtualItem.size}px`,
+              transform: `translateY(${
+                virtualItem.start - virtualizer.options.scrollMargin
+              }px)`,
+            }}
+          >
+            {user.name}
+          </li>
+        );
+      })}
     </ul>
   );
 }

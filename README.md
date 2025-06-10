@@ -60,7 +60,9 @@ export default UserList;
 users的呈現上，在模擬出一萬筆資料進來後，可看到大量資料在畫面更新時造成卡頓
 ```
 // Solution
-為了防止全部DOM被渲染，使用react-virtualized的WindowScroller實作虛擬化列表，套件會協助算出畫面上需要的筆數，減少DOM節點來避開不必要的reflow
+為了防止全部DOM被渲染，使用@tanstack/react-virtual實作虛擬化列表，套件會協助算出畫面上需要的筆數，減少DOM節點來避開不必要的reflow
+(原本我有採用react-virtualized的WindowScroller，但我近一年沒實作這塊，發現了@tanstack team有更好的方案且實測效能更佳，因此更新版本採用)
+
 ```
 
 ## 畫面抖動與UIUX改良
